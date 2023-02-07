@@ -1,0 +1,26 @@
+body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.menuItem > input:focus {
+    width: 600px;
+}
+
+.menuItem > input:focus ~ i.inputIcon {
+    transform: rotate(180deg);
+}
+
+.menuItem > input:focus ~ .dropdown {
+    display: grid;
+    max-height: 350px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
