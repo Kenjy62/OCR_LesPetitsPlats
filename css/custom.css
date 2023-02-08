@@ -25,6 +25,11 @@ input:focus {
 }
 
 @media (max-width: 768px) { 
+
+    body {
+        padding: 5px;
+    }
+
     .menuItem > input:focus {
         width: fit-content;
     }
