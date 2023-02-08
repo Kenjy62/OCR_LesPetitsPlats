@@ -21,7 +21,31 @@
       </label>
   </div>
   <!-- Tags Selected -->
-  <div class="w-full my-5 p-2 flex flex-row">
+  <div class="w-full my-5 p-2 flex flex-row flex-wrap gap-y-3">
+    <div class="bg-customBlue rounded-sm py-2 px-3 text-white mr-2 text-sm flex items-center justify-center cursor-pointer">
+        <div class="">Coco</div>
+        <div class=" ml-2 h-5 w-5 border border-white border-solid rounded-full flex justify-center items-center text-xs">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    <div class="bg-customBlue rounded-sm py-2 px-3 text-white mr-2 text-sm flex items-center justify-center cursor-pointer">
+        <div class="">Coco</div>
+        <div class=" ml-2 h-5 w-5 border border-white border-solid rounded-full flex justify-center items-center text-xs">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    <div class="bg-customBlue rounded-sm py-2 px-3 text-white mr-2 text-sm flex items-center justify-center cursor-pointer">
+        <div class="">Coco</div>
+        <div class=" ml-2 h-5 w-5 border border-white border-solid rounded-full flex justify-center items-center text-xs">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    <div class="bg-customBlue rounded-sm py-2 px-3 text-white mr-2 text-sm flex items-center justify-center cursor-pointer">
+        <div class="">Coco</div>
+        <div class=" ml-2 h-5 w-5 border border-white border-solid rounded-full flex justify-center items-center text-xs">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+    </div>
     <div class="bg-customBlue rounded-sm py-2 px-3 text-white mr-2 text-sm flex items-center justify-center cursor-pointer">
         <div class="">Coco</div>
         <div class=" ml-2 h-5 w-5 border border-white border-solid rounded-full flex justify-center items-center text-xs">
@@ -36,31 +60,31 @@
     </div>
   </div>
   <!-- Menu -->
-    <div class="w-full my-5 p-2 flex flex-row">
-        <div class="menuItem bg-customBlue rounded-sm py-4 px-6 text-white mr-4 text-md float-left flex items-center justify-center cursor-pointer relative">
-            <input class="bg-transparent placeholder:text-white" type="text" placeholder="Ingredients" />
-            <i class="inputIcon ml-4 fa-solid fa-chevron-down"></i>
-            <div id="ingredients" class="dropdown absolute top-[55px] left-0 bg-customBlue w-full py-4 px-6 rounded-b-sm grid-cols-3 gap-2 hidden">
+    <div class="w-full my-5 p-2 flex flex-col flex-wrap lg:flex lg:flex-row">
+        <div class="menuItem bg-customBlue rounded-sm py-4 px-6 md:text-red-50 text-white my-2 lg:mr-4 text-md md:float-left flex flex-wrap items-center justify-center cursor-pointer relative">
+            <input class="bg-transparent flex-grow flex-shrink-[2] order-[0] placeholder:text-white" type="text" placeholder="Ingredients" />
+            <i class="inputIcon ml-4 fa-solid fa-chevron-down flex-grow-[0] flex-shrink-[1] order-[0]"></i>
+            <div id="ingredients" class=" z-10 dropdown lg:absolute top-[55px] left-0 bg-customBlue w-full py-4 px-6 rounded-b-sm grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 hidden flex-grow-0 flex-shrink order-[0]">
                 
             </div>
         </div>
-        <div class="menuItem bg-customGreen rounded-sm py-4 px-6 text-white mr-4 text-md float-left flex items-center justify-center cursor-pointer relative">
-            <input class="bg-transparent placeholder:text-white" type="text" placeholder="Appareils" />
-            <i class="inputIcon ml-4 fa-solid fa-chevron-down"></i>
-            <div id="appareils" class="dropdown absolute top-[55px] left-0 bg-customGreen w-full py-4 px-6 rounded-b-sm grid-cols-3 gap-2 hidden">
-             
+        <div class="menuItem bg-customGreen rounded-sm py-4 px-6 md:text-red-50 text-white my-2 lg:mr-4 text-md md:float-left flex flex-wrap items-center justify-center cursor-pointer relative">
+            <input class="bg-transparent flex-grow flex-shrink-[2] order-[0] placeholder:text-white" type="text" placeholder="Appareils" />
+            <i class="inputIcon ml-4 fa-solid fa-chevron-down flex-grow-[0] flex-shrink-[1] order-[0]"></i>
+            <div id="appareils" class=" z-10 dropdown lg:absolute top-[55px] left-0 bg-customGreen w-full py-4 px-6 rounded-b-sm grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 hidden flex-grow-0 flex-shrink order-[0]">
+                
             </div>
         </div>
-        <div class="menuItem bg-customOrange rounded-sm py-4 px-6 text-white mr-4 text-md float-left flex items-center justify-center cursor-pointer relative">
-            <input class="bg-transparent placeholder:text-white" type="text" placeholder="Ustensiles" />
-            <i class="inputIcon ml-4 fa-solid fa-chevron-down"></i>
-            <div id="ustensiles" class="dropdown absolute top-[55px] left-0 bg-customOrange w-full py-4 px-6 rounded-b-sm grid-cols-3 gap-2 hidden">
+        <div class="menuItem bg-customOrange rounded-sm py-4 px-6 md:text-red-50 text-white my-2 lg:mr-4 text-md md:float-left flex flex-wrap items-center justify-center cursor-pointer relative">
+            <input class="bg-transparent flex-grow flex-shrink-[2] order-[0] placeholder:text-white" type="text" placeholder="Ustensiles" />
+            <i class="inputIcon ml-4 fa-solid fa-chevron-down flex-grow-[0] flex-shrink-[1] order-[0]"></i>
+            <div id="ustensiles" class=" z-10 dropdown lg:absolute top-[55px] left-0 bg-customOrange w-full py-4 px-6 rounded-b-sm grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 hidden flex-grow-0 flex-shrink order-[0]">
                 
             </div>
         </div>
     </div>
    <!-- Main -->
-   <main class="grid grid-cols-3 gap-16 p-2 my-5">
+   <main class="grid grid-rows-1 gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 p-2 my-5">
     <article class="bg-customGray rounded-sm">
         <div class="h-52 bg-customGrayMore"></div>
         <div class="grid grid-cols-2 bg-customGray">

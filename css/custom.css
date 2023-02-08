@@ -24,3 +24,8 @@ input:focus {
     overflow-y: scroll;
 }
 
+@media (max-width: 768px) { 
+    .menuItem > input:focus {
+        width: fit-content;
+    }
+ }
