@@ -104,6 +104,8 @@ makeRecette(recettes)
 
 // Searchbar
 DOM.searchbar.addEventListener('keyup', function(e){
+
+    console.log('here')
     // if > 2 characters
     if(e.currentTarget.value.length >= 2){
        const results = recettes.filter(recette => 
