@@ -102,6 +102,32 @@ function makeRecette(list){
 }
 makeRecette(recettes)
 
+// Searchbar
+DOM.searchbar.addEventListener('keyup', function(e){
+    // if > 2 characters
+    if(e.currentTarget.value.length >= 2){
+       const results = recettes.filter(recette => 
+        recette.name.toLowerCase().includes(e.currentTarget.value.toLowerCase()) || 
+        recette.description.toLowerCase().includes(e.currentTarget.value.toLowerCase()) || 
+        recette.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(e.currentTarget.value.toLowerCase())))
+
+        // if return results
+       if(results.length > 0){
+        clearDOM('recettes')
+        makeRecette(results)
+       } else {
+        // else, display error message
+        clearDOM('recettes')
+        DOM.recettes.insertAdjacentHTML('beforeend', `<span>Aucun résultats pour la recherche '${e.currentTarget.value}'...</span>`)
+       }
+    } else {
+        // < 3 characters, display all
+        clearDOM()
+        makeRecette(recettes)
+    }
+    
+})
+
 // Advanced Search
 DOM.ingredientsInput.addEventListener('keyup', function(e){
     if(e.currentTarget.value.length > 0){
