@@ -13,16 +13,7 @@ input:focus {
     width: 600px;
 }
 
-.menuItem > input:focus ~ i.inputIcon {
-    transform: rotate(180deg);
-}
 
-.menuItem > input:focus ~ .dropdown {
-    display: grid;
-    max-height: 350px;
-    overflow: hidden;
-    overflow-y: scroll;
-}
 
 @media (max-width: 768px) { 
 
