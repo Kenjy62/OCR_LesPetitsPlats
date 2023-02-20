@@ -1,6 +1,6 @@
 // Required
 
-import { DOM, clearDOM, makeRecette } from "./dom.js";
+import { DOM, clearDOM, makeRecette, makeErrorMsg } from "./dom.js";
 import { recettes, ingredients, ustensiles, appareils } from "./data.js";
 import { makeAppareils, makeIngredients, makeUstensiles } from "./menu.js";
 
@@ -30,6 +30,7 @@ function search(keywords) {
     );
   }
 
+  // Check if tags
   if (currentTags.length > 0) {
     currentTags.forEach((tag) => {
       switch (tag.type) {
@@ -58,62 +59,19 @@ function search(keywords) {
   }
 
   clearDOM("recettes");
-  makeRecette(currentResults);
+  clearDOM("errorMsg");
+
+  if (currentResults.length > 0) {
+    makeRecette(currentResults);
+  } else {
+    if (currentKeywords.length > 0) {
+      var message = `Aucuns résultats avec la recherche '${currentKeywords}...'`;
+    } else {
+      var message = `Aucuns résultats avec les tags utilisés...`;
+    }
+    makeErrorMsg(message);
+  }
 }
-
-// // Search with tags function
-// function searchWithTags(tags) {
-//   console.log("Actually Tags");
-//   console.log(tags);
-
-//   var recipesList;
-
-//   // If already search with Searchbar
-//   if (actuallySearchString != undefined && tags.length > 0) {
-//     recipesList = actuallySearchResults;
-
-//     // If not already search with Searchbar
-//   } else if (tags.length > 0) {
-//     recipesList = recettes;
-//   }
-
-//   // Filter results with one or more tags
-//   tags.forEach((tag) => {
-//     switch (tag.type) {
-//       case "ingredient":
-//         recipesList = recipesList.filter((recipe) =>
-//           recipe.ingredients.some((ingredient) =>
-//             ingredient.ingredient.toLowerCase().includes(tag.name.toLowerCase())
-//           )
-//         );
-//         break;
-//       case "appareil":
-//         recipesList = recipesList.filter((recipe) =>
-//           recipe.appliance.toLowerCase().includes(tag.name.toLowerCase())
-//         );
-//         break;
-//       case "ustensile":
-//         recipesList = recipesList.filter((recipe) =>
-//           recipe.ustensils.some((ustensils) =>
-//             ustensils.toLowerCase().includes(tag.name.toLowerCase())
-//           )
-//         );
-//         break;
-//       default:
-//         break;
-//     }
-//   });
-
-//   clearDOM("recettes");
-//   if (recipesList.length > 0) {
-//     makeRecette(recipesList);
-//     actuallySearchResults = recipesList;
-//   } else {
-//     // Display Error message if no results
-//     let obj = `<span>Aucun résultats pour la recherche '${actuallySearchString} avec les mots clès séléctionés'...</span>`;
-//     DOM.recettes.insertAdjacentHTML("beforeend", obj);
-//   }
-// }
 
 // Add // Remove tags
 function AddOrRemoveTag(obj) {
@@ -152,6 +110,7 @@ DOM.ingredientsInput.addEventListener("keyup", function (e) {
 });
 
 DOM.appareilsInput.addEventListener("keyup", function (e) {
+  e.stopImmediatePropagation();
   if (e.currentTarget.value.length > 0) {
     const results = appareils.filter((appareils) =>
       appareils.toLowerCase().includes(e.currentTarget.value.toLowerCase())

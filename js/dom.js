@@ -9,6 +9,7 @@ export const DOM = {
   appareilsInput: document.getElementById("appareilsInput"),
   ustensilesInput: document.getElementById("ustensilesInput"),
   tag: document.getElementById("tags"),
+  errorMsg: document.getElementById("errorMsg"),
 };
 
 // Clear the DOM
@@ -34,6 +35,10 @@ export function clearDOM(target) {
         DOM.ustensiles.removeChild(DOM.ustensiles.firstChild);
       }
       break;
+    case "errorMsg":
+      while (DOM.errorMsg.firstChild) {
+        DOM.errorMsg.removeChild(DOM.errorMsg.firstChild);
+      }
     default:
       break;
   }
@@ -78,6 +83,13 @@ export function makeRecette(list) {
       target[0].insertAdjacentHTML(`beforeend`, obj);
     });
   });
+}
+
+// Display Error Message
+export function makeErrorMsg(message) {
+  let obj = `<span>${message}<span>`;
+  errorMsg.insertAdjacentHTML("beforeend", obj);
+  errorMsg.style.display = "block";
 }
 
 // Hide All
