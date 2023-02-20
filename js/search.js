@@ -17,59 +17,78 @@ DOM.searchbar.addEventListener("keyup", function (e) {
 
 // Search function
 function search(keywords) {
-  if (keywords === undefined || (keywords.length < 3 && keywords.length >= 0)) {
-    currentResults = recettes;
-  } else {
-    currentResults = recettes.filter(
-      (recipe) =>
-        recipe.name.toLowerCase().includes(keywords.toLowerCase()) ||
-        recipe.description.toLowerCase().includes(keywords.toLowerCase()) ||
-        recipe.ingredients.some((ingredient) =>
-          ingredient.ingredient.toLowerCase().includes(keywords.toLowerCase())
-        )
-    );
+  var result = [];
+  var resultWithTags = [];
+
+  if (keywords != undefined && keywords.length > 2) {
+    for (let [index, value] of recettes.entries()) {
+      if (
+        value.name.toLowerCase().includes(keywords.toLowerCase()) ||
+        value.description.toLowerCase().includes(keywords.toLowerCase())
+      ) {
+        result.push(value);
+      } else {
+        for (let [i, ingredient] of recettes[index].ingredients.entries()) {
+          if (
+            ingredient.ingredient.toLowerCase().includes(keywords.toLowerCase())
+          ) {
+            result.push(recettes[index]);
+          }
+        }
+      }
+    }
   }
 
-  // Check if tags
   if (currentTags.length > 0) {
-    currentTags.forEach((tag) => {
+    for (let tag of currentTags) {
       switch (tag.type) {
         case "ingredient":
-          currentResults = currentResults.filter((recipe) =>
-            recipe.ingredients.some((ingredient) =>
-              ingredient.ingredient
-                .toLowerCase()
-                .includes(tag.name.toLowerCase())
-            )
-          );
+          for (let [index, recette] of result.entries()) {
+            for (let [i, ingredient] of recette.ingredients.entries()) {
+              if (
+                ingredient.ingredient
+                  .toLowerCase()
+                  .includes(tag.name.toLowerCase())
+              ) {
+                resultWithTags.push(recette);
+              }
+            }
+          }
           break;
         case "appareil":
-          currentResults = currentResults.filter((recipe) =>
-            recipe.appliance.toLowerCase().includes(tag.name.toLowerCase())
-          );
+          for (let [index, recette] of result.entries()) {
+            if (
+              recette.appliance.toLowerCase().includes(tag.name.toLowerCase())
+            ) {
+              resultWithTags.push(recette);
+            }
+          }
           break;
         case "ustensil":
-          currentResults = currentResults.filter((recipe) =>
-            recipe.ustensils.some((ustensils) =>
-              ustensils.toLowerCase().includes(tag.name.toLowerCase())
-            )
-          );
+          for (let [index, recette] of result.entries()) {
+            for (let [i, ustensil] of recette.ustensils.entries()) {
+              if (ustensil.toLowerCase().includes(tag.name.toLowerCase())) {
+                resultWithTags.push(recette);
+              }
+            }
+          }
+          break;
+        default:
+          break;
       }
-    });
+    }
   }
 
-  clearDOM("recettes");
-  clearDOM("errorMsg");
-
-  if (currentResults.length > 0) {
-    makeRecette(currentResults);
-  } else {
-    if (currentKeywords.length > 0) {
-      var message = `Aucuns résultats avec la recherche '${currentKeywords}...'`;
+  if (result.length > 0 || resultWithTags.length > 0) {
+    if (currentTags.length > 0) {
+      clearDOM("recettes");
+      clearDOM("errorMsg");
+      makeRecette(resultWithTags);
     } else {
-      var message = `Aucuns résultats avec les tags utilisés...`;
+      clearDOM("recettes");
+      clearDOM("errorMsg");
+      makeRecette(result);
     }
-    makeErrorMsg(message);
   }
 }
 
