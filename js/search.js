@@ -129,6 +129,8 @@ DOM.appareilsInput.addEventListener("keyup", function (e) {
     clearDOM("appareils");
     makeAppareils(appareils);
   }
+
+  addingListenerToItems();
 });
 
 DOM.ustensilesInput.addEventListener("keyup", function (e) {
@@ -150,6 +152,7 @@ DOM.ustensilesInput.addEventListener("keyup", function (e) {
     clearDOM("ustensiles");
     makeUstensiles(ustensiles);
   }
+  addingListenerToItems();
 });
 
 // Adding listener for item in menu 'before/after modification'
