@@ -1,9 +1,17 @@
+// Required
+
+// Menu Data
 import { ingredients, appareils, ustensiles } from "./data.js";
+
+// Clear DOM
 import { DOM, clearDOM } from "./dom.js";
+
+// Search function
 import { search, currentKeywords, currentTags } from "./search.js";
 
 // Make all menus items
 export function makeIngredients(list) {
+  clearDOM("ingredients");
   list.forEach((ingredient) => {
     DOM.ingredients.insertAdjacentHTML(
       "beforeend",
@@ -14,6 +22,7 @@ export function makeIngredients(list) {
 makeIngredients(ingredients);
 
 export function makeAppareils(list) {
+  clearDOM("appareils");
   list.forEach((appareil) => {
     DOM.appareils.insertAdjacentHTML(
       "beforeend",
@@ -24,6 +33,7 @@ export function makeAppareils(list) {
 makeAppareils(appareils);
 
 export function makeUstensiles(list) {
+  clearDOM("ustensiles");
   list.forEach((ustensile) => {
     DOM.ustensiles.insertAdjacentHTML(
       "beforeend",
@@ -87,6 +97,14 @@ DOM.ingredientsInput.addEventListener("keydown", (e) =>
   searchInTag(e, "ingredient")
 );
 
+DOM.appareilsInput.addEventListener("keydown", (e) =>
+  searchInTag(e, "appareil")
+);
+
+DOM.ustensilesInput.addEventListener("keydown", (e) =>
+  searchInTag(e, "ustensil")
+);
+
 // Clean Up Function
 function clearAllListerner() {
   // Add Tag Clean Up
@@ -101,7 +119,7 @@ function clearAllListerner() {
 }
 
 // Listener Builder
-function buildListerner(e) {
+export function buildListerner(e) {
   // Prevent Clear All Listener
   clearAllListerner();
 
@@ -118,7 +136,6 @@ function buildListerner(e) {
 
 // Function for Adding Tag
 const addTag = (e) => {
-  console.log("Adding Tag");
   if (e.target.closest("#ingredients")) {
     let obj = `<div data='${e.target.getAttribute(
       "value"
@@ -193,7 +210,7 @@ function updateTag(tag) {
   if (tag.action === "Add") {
     currentTags.push(tag);
   } else if (tag.action === "Remove") {
-    let index = currentTags.findIndex((tag) => tag.name === tag.name);
+    let index = currentTags.findIndex((item) => item.name === tag.name);
     currentTags.splice(index, 1);
   }
 }
