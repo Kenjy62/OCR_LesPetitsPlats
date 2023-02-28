@@ -1,5 +1,5 @@
 // Base array
-export const recettes = [];
-export const ingredients = [];
-export const appareils = [];
-export const ustensiles = [];
+export var recettes = [];
+export var ingredients = [];
+export var appareils = [];
+export var ustensiles = [];
