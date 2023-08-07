@@ -1,9 +1,9 @@
-<p align="center"><img src="https://user.oc-static.com/upload/2020/08/18/15977566540758_15975854296086_image1%20%281%29.png"></img></p>
+<p align="center"><img src="https://user.oc-static.com/upload/2020/08/14/15973932905401_logo%20%281%29.png"></img></p>
 
 <br>
 
 # Les Petits Plats
-Project 6 for **OpenClassrooms Developer React Formation**
+Project 7 for **OpenClassrooms Developer React Formation**
 
 <br>
 
